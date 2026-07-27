@@ -341,3 +341,12 @@ if (heroHeading) {
   heroHeading.innerHTML =
     `${greeting}, <span>Twyla.</span>`;
 }
+setInterval(() => {
+  if (!hadesMessage) return;
+
+  hadesMessageIndex =
+    (hadesMessageIndex + 1) % hadesMessages.length;
+
+  hadesMessage.textContent =
+    hadesMessages[hadesMessageIndex];
+}, 7000);
