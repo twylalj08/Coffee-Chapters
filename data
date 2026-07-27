@@ -1,1 +1,21 @@
-library.json
+{
+  "profile": {
+    "owner": "Twyla",
+    "libraryName": "Coffee & Chapters",
+    "theme": "autumn"
+  },
+
+  "stats": {
+    "library": 0,
+    "tbr": 0,
+    "finished": 0
+  },
+
+  "currentlyReading": null,
+
+  "library": [],
+
+  "tbr": [],
+
+  "finished": []
+}
