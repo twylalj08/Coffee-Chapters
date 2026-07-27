@@ -1310,3 +1310,108 @@ body.spring .arched-window {
     font-size: 0.78rem;
   }
 }
+/* Cottagecore colour refresh */
+
+:root {
+  --cottage-cream: #f7f0df;
+  --cottage-paper: #fffaf0;
+  --cottage-sage: #7f9270;
+  --cottage-sage-dark: #59664f;
+  --cottage-rose: #c98f8a;
+  --cottage-clay: #b8785f;
+  --cottage-gold: #d8b56b;
+  --cottage-wood: #76513d;
+  --cottage-ink: #40372f;
+}
+
+body {
+  background:
+    linear-gradient(
+      rgba(255, 250, 240, 0.82),
+      rgba(247, 240, 223, 0.9)
+    ),
+    #f7f0df;
+  color: var(--cottage-ink);
+}
+
+.site-header {
+  background: rgba(255, 250, 240, 0.94);
+  border: 1px solid rgba(127, 146, 112, 0.28);
+  box-shadow: 0 10px 24px rgba(89, 102, 79, 0.14);
+}
+
+.brand-icon {
+  background: var(--cottage-rose);
+  color: var(--cottage-paper);
+}
+
+.brand strong {
+  color: var(--cottage-sage-dark);
+}
+
+.brand small {
+  color: var(--cottage-clay);
+}
+
+.season-button {
+  background: var(--cottage-sage);
+  color: white;
+  border: 1px solid var(--cottage-sage-dark);
+  box-shadow: 0 6px 14px rgba(89, 102, 79, 0.18);
+}
+
+.room-heading h1 {
+  color: var(--cottage-sage-dark);
+  text-shadow: 0 4px 12px rgba(89, 102, 79, 0.12);
+}
+
+.eyebrow {
+  color: var(--cottage-clay);
+}
+
+.hero-tagline {
+  color: #66584e;
+}
+
+.weather-banner {
+  background: rgba(255, 250, 240, 0.96);
+  border: 1px solid rgba(201, 143, 138, 0.32);
+  box-shadow: 0 10px 24px rgba(118, 81, 61, 0.12);
+}
+
+.weather-copy strong {
+  color: var(--cottage-sage-dark);
+}
+
+.weather-copy small {
+  color: #6d6259;
+}
+
+.hero-button {
+  background: var(--cottage-sage);
+  color: white;
+  border: 1px solid var(--cottage-sage-dark);
+  box-shadow: 0 8px 18px rgba(89, 102, 79, 0.2);
+}
+
+.hero-button.secondary {
+  background: var(--cottage-rose);
+  color: white;
+  border-color: #ad7470;
+}
+
+.reading-room {
+  background:
+    radial-gradient(circle at top left, rgba(216, 181, 107, 0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(127, 146, 112, 0.16), transparent 34%),
+    var(--cottage-cream);
+}
+
+.room-scene {
+  border: 1px solid rgba(127, 146, 112, 0.24);
+  box-shadow: 0 16px 35px rgba(89, 102, 79, 0.14);
+}
+
+footer {
+  color: #6c5e54;
+}
