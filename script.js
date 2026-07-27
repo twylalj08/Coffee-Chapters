@@ -135,6 +135,10 @@ function renderLibrary() {
             ${book.notes
                 ? `<p class="book-notes">${book.notes}</p>`
                 : ""}
+       <div class="book-actions">
+    <button type="button">✏️ Edit</button>
+    <button type="button">🗑️ Delete</button>
+</div>
         `;
 
         libraryGrid.appendChild(bookCard);
@@ -303,3 +307,51 @@ continueReading.addEventListener("click", () => {
 loadLibrary();
 renderLibrary();
 updateStats();
+// ==============================
+// Edit + Delete Books
+// ==============================
+
+libraryGrid.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+
+    const card = button.closest(".book-card");
+    if (!card) return;
+
+    const title = card.querySelector("h3").textContent;
+
+    const book = library.find(b => b.title === title);
+    if (!book) return;
+
+    // Delete
+    if (button.textContent.includes("Delete")) {
+        if (!confirm(`Delete "${book.title}"?`)) return;
+
+        library = library.filter(b => b.id !== book.id);
+        saveLibrary();
+        renderLibrary();
+        updateStats();
+        return;
+    }
+
+    // Edit
+    if (button.textContent.includes("Edit")) {
+
+        const newTitle = prompt("Book Title:", book.title);
+        if (newTitle === null) return;
+
+        const newAuthor = prompt("Author:", book.author);
+        if (newAuthor === null) return;
+
+        const newNotes = prompt("Notes:", book.notes);
+        if (newNotes === null) return;
+
+        book.title = newTitle;
+        book.author = newAuthor;
+        book.notes = newNotes;
+
+        saveLibrary();
+        renderLibrary();
+        updateStats();
+    }
+});
