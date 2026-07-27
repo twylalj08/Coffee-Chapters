@@ -1,213 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
 
-    <title>Coffee & Chapters</title>
+  <meta
+    name="description"
+    content="Coffee & Chapters — Twyla's cozy personal library and reading tracker."
+  >
 
-    <meta name="description" content="A cozy personal reading library.">
+  <meta name="theme-color" content="#3b251c">
 
-    <link rel="stylesheet" href="styles.css">
+  <title>Coffee & Chapters</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
+  <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="autumn-theme">
 
-<header>
+  <div class="seasonal-background" aria-hidden="true">
+    <span class="floating-leaf leaf-one">🍂</span>
+    <span class="floating-leaf leaf-two">🍁</span>
+    <span class="floating-leaf leaf-three">🍂</span>
+    <span class="floating-leaf leaf-four">🍁</span>
+  </div>
 
-    <div class="logo">
+  <header class="site-header">
 
-        <h1>☕ Coffee & Chapters</h1>
+    <div class="header-inner">
 
-        <p>One more chapter. One more cup.</p>
+      <a class="brand" href="#home" aria-label="Coffee and Chapters home">
+        <span class="brand-icon">☕</span>
+
+        <span class="brand-copy">
+          <span class="brand-name">Coffee &amp; Chapters</span>
+          <span class="brand-tagline">One more chapter. One more cup.</span>
+        </span>
+      </a>
+
+      <button
+        id="seasonButton"
+        class="season-button"
+        type="button"
+        aria-label="Change seasonal theme"
+      >
+        🍂 Autumn
+      </button>
 
     </div>
 
-</header>
+  </header>
 
+  <nav class="main-navigation" aria-label="Main navigation">
 
-<nav>
+    <a class="active" href="#home">Home</a>
+    <a href="#dashboard">My Books</a>
+    <a href="#featuredShelf">Shelf</a>
+    <a href="#readingChallenge">Challenge</a>
 
-    <a href="index.html">Home</a>
+  </nav>
 
-    <a href="pages/library.html">Library</a>
+  <main id="home">
 
-    <a href="pages/tbr.html">TBR</a>
+    <section class="hero-section">
 
-    <a href="pages/finished.html">Finished</a>
+      <div class="hero-content">
 
-    <a href="pages/stats.html">Stats</a>
+        <p class="eyebrow">Your cozy reading room</p>
 
-    <a href="pages/coffee.html">Coffee Corner</a>
+        <h1>
+          Good evening,
+          <span>Twyla.</span>
+        </h1>
 
-    <a href="pages/garden.html">Garden</a>
-
-</nav>
-
-
-<main>
-
-<section class="hero">
-
-    <div class="hero-text">
-
-        <h2>Welcome back, Twyla.</h2>
-
-        <p>
-
-            Grab a warm drink, settle into your favorite chair,
-            and lose yourself in another story.
-
+        <p class="hero-description">
+          Grab your coffee, find your next book and settle in for
+          another chapter.
         </p>
 
-        <button id="seasonButton">
+        <div class="hero-actions">
 
-            🍂 Autumn Theme
+          <a class="primary-button" href="#dashboard">
+            View My Books
+          </a>
 
+          <a class="secondary-button" href="#featuredShelf">
+            Browse the Shelf
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-illustration" aria-hidden="true">
+
+        <div class="window">
+          <div class="window-glow"></div>
+          <span class="window-leaf">🍂</span>
+        </div>
+
+        <div class="coffee-cup">
+          <span class="steam steam-one"></span>
+          <span class="steam steam-two"></span>
+          <span class="steam steam-three"></span>
+          <span class="cup-symbol">☕</span>
+        </div>
+
+        <div class="book-stack">
+          <span class="stack-book book-one"></span>
+          <span class="stack-book book-two"></span>
+          <span class="stack-book book-three"></span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="dashboard" class="dashboard-section">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">Reading dashboard</p>
+        <h2>Your Library at a Glance</h2>
+
+      </div>
+
+      <div class="dashboard-grid">
+
+        <article class="dashboard-card currently-reading-card">
+
+          <div class="card-icon">📖</div>
+
+          <div>
+            <p class="card-label">Currently Reading</p>
+            <h3 id="currentBook">Choose your next adventure...</h3>
+            <p class="card-detail" id="currentAuthor">
+              No current book selected
+            </p>
+          </div>
+
+        </article>
+
+        <article class="dashboard-card">
+
+          <div class="card-icon">📚</div>
+
+          <div>
+            <p class="card-label">My Library</p>
+            <h3 id="libraryCount">0 Books</h3>
+            <p class="card-detail">Your complete collection</p>
+          </div>
+
+        </article>
+
+        <article class="dashboard-card">
+
+          <div class="card-icon">❤️</div>
+
+          <div>
+            <p class="card-label">To Be Read</p>
+            <h3 id="tbrCount">0 Books</h3>
+            <p class="card-detail">Waiting on your shelf</p>
+          </div>
+
+        </article>
+
+        <article class="dashboard-card">
+
+          <div class="card-icon">⭐</div>
+
+          <div>
+            <p class="card-label">Finished</p>
+            <h3 id="finishedCount">0 Books</h3>
+            <p class="card-detail">Stories you have completed</p>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section id="readingChallenge" class="challenge-section">
+
+      <div class="challenge-card">
+
+        <div class="challenge-header">
+
+          <div>
+            <p class="eyebrow">2026 Reading Challenge</p>
+            <h2>Keep turning those pages.</h2>
+          </div>
+
+          <span class="challenge-badge">📚</span>
+
+        </div>
+
+        <div class="challenge-numbers">
+
+          <span id="challengeProgress">0 books finished</span>
+          <span id="challengeGoal">Goal: 50</span>
+
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Reading challenge progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+        <p id="challengeMessage" class="challenge-message">
+          Every finished book brings the shelf to life.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section id="featuredShelf" class="featured-section">
+
+      <div class="section-heading shelf-heading">
+
+        <div>
+          <p class="eyebrow">Featured shelf</p>
+          <h2>Your Cozy Bookshelf</h2>
+        </div>
+
+        <span class="shelf-note">More books coming soon</span>
+
+      </div>
+
+      <div class="bookshelf-scene">
+
+        <div class="fairy-lights" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="shelf-row">
+
+          <button class="book-spine spine-one" type="button">
+            <span>Dark<br>Romance</span>
+          </button>
+
+          <button class="book-spine spine-two" type="button">
+            <span>Paranormal</span>
+          </button>
+
+          <button class="book-spine spine-three" type="button">
+            <span>Quick<br>Reads</span>
+          </button>
+
+          <button class="book-spine spine-four" type="button">
+            <span>Thrillers</span>
+          </button>
+
+          <button class="book-spine spine-five" type="button">
+            <span>Halloween</span>
+          </button>
+
+          <button class="book-spine spine-six" type="button">
+            <span>Christmas</span>
+          </button>
+
+        </div>
+
+        <div class="wooden-shelf"></div>
+
+        <button
+          id="hadesButton"
+          class="hades"
+          type="button"
+          aria-label="Wake Hades"
+        >
+          <span class="cat-body">🐈‍⬛</span>
+          <span id="hadesMessage" class="cat-message">
+            Hades is guarding your books.
+          </span>
         </button>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
+    <section class="quote-section">
 
+      <div class="quote-card">
 
-<section class="cards">
+        <span class="quote-mark">“</span>
 
-<div class="card">
+        <blockquote id="dailyQuote">
+          A reader lives a thousand lives before they die.
+        </blockquote>
 
-<h3>📖 Currently Reading</h3>
+        <p id="quoteAuthor">— George R. R. Martin</p>
 
-<p id="currentBook">
+      </div>
 
-No book selected yet.
+    </section>
 
-</p>
+  </main>
 
-</div>
+  <footer class="site-footer">
 
+    <p>
+      Made with coffee, books and a little black-cat magic.
+    </p>
 
+    <p class="copyright">
+      Coffee &amp; Chapters © 2026
+    </p>
 
-<div class="card">
+  </footer>
 
-<h3>📚 Library</h3>
-
-<p id="libraryCount">
-
-0 Books
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>⭐ Finished</h3>
-
-<p id="finishedCount">
-
-0 Books
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>❤️ TBR</h3>
-
-<p id="tbrCount">
-
-0 Books
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<section class="quote">
-
-<h2>Today's Quote</h2>
-
-<blockquote>
-
-"A reader lives a thousand lives before he dies."
-
-</blockquote>
-
-<p>— George R. R. Martin</p>
-
-</section>
-
-
-
-<section class="bookshelf">
-
-<h2>Featured Shelf</h2>
-
-<div class="shelf">
-
-<div class="book"></div>
-
-<div class="book"></div>
-
-<div class="book"></div>
-
-<div class="book"></div>
-
-<div class="book"></div>
-
-<div class="book"></div>
-
-</div>
-
-</section>
-
-
-
-<section class="cat">
-
-<div id="hades">
-
-🐈‍⬛ Hades is sleeping peacefully on the bookshelf.
-
-</div>
-
-</section>
-
-</main>
-
-
-
-<footer>
-
-<p>
-
-Coffee & Chapters © 2026
-
-</p>
-
-</footer>
-
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
-
 </html>
