@@ -1248,3 +1248,65 @@ body.spring .arched-window {
     width: 100%;
   }
 }
+/* Storybook Cottage heading */
+
+.cottage-heading {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cottage-heading h1 {
+  margin-bottom: 0.75rem;
+}
+
+.weather-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.5rem auto 2rem;
+  padding: 0.9rem 1.2rem;
+  background: rgba(255, 248, 235, 0.88);
+  border: 1px solid rgba(104, 69, 47, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(45, 27, 17, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.weather-icon {
+  font-size: 2rem;
+}
+
+.weather-copy {
+  text-align: left;
+}
+
+.weather-copy strong,
+.weather-copy small {
+  display: block;
+}
+
+.weather-copy strong {
+  color: #42291d;
+  font-size: 1rem;
+}
+
+.weather-copy small {
+  margin-top: 0.15rem;
+  color: #735947;
+  line-height: 1.35;
+}
+
+@media (max-width: 600px) {
+  .weather-banner {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .weather-copy small {
+    font-size: 0.78rem;
+  }
+}
