@@ -1,22 +1,10 @@
-// ==========================================
-// Coffee & Chapters
-// Storybook Cottage Version 1.0
-// ==========================================
-
-// ---------- Storage ----------
+// Coffee & Chapters app
 
 const STORAGE_KEY = "coffeeChaptersLibrary";
-
-// ---------- Book Library ----------
-
 let library = [];
-
-// ---------- Navigation ----------
 
 const menuButton = document.getElementById("menuButton");
 const mainNav = document.getElementById("mainNav");
-
-// ---------- Dashboard ----------
 
 const totalBooks = document.getElementById("totalBooks");
 const readingCount = document.getElementById("readingCount");
@@ -25,16 +13,11 @@ const readCount = document.getElementById("readCount");
 const favoriteCount = document.getElementById("favoriteCount");
 const averageRating = document.getElementById("averageRating");
 
-// ---------- Library ----------
-
 const libraryGrid = document.getElementById("libraryGrid");
 const searchBooks = document.getElementById("searchBooks");
 const filterStatus = document.getElementById("filterStatus");
 
-// ---------- Form ----------
-
 const bookForm = document.getElementById("bookForm");
-
 const bookTitle = document.getElementById("bookTitle");
 const bookAuthor = document.getElementById("bookAuthor");
 const bookStatus = document.getElementById("bookStatus");
@@ -42,59 +25,67 @@ const bookRating = document.getElementById("bookRating");
 const bookNotes = document.getElementById("bookNotes");
 const bookFavorite = document.getElementById("bookFavorite");
 
-// ---------- Buttons ----------
-
 const hadesPick = document.getElementById("hadesPick");
 const continueReading = document.getElementById("continueReading");
-// ==========================================
-// Save and Load Library
-// ==========================================
 
 function saveLibrary() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(library));
 }
 
+function normalize(value) {
+    return String(value || "").trim().toLowerCase();
+}
+
+function getBookKey(book) {
+    return `${normalize(book.title)}|${normalize(book.author)}`;
+}
+
 function loadLibrary() {
     const savedLibrary = localStorage.getItem(STORAGE_KEY);
-
     let savedBooks = [];
 
     if (savedLibrary) {
         try {
-            savedBooks = JSON.parse(savedLibrary);
+            const parsedLibrary = JSON.parse(savedLibrary);
+
+            if (Array.isArray(parsedLibrary)) {
+                savedBooks = parsedLibrary;
+            }
         } catch (error) {
             console.error("Could not load the saved library:", error);
         }
     }
 
     const savedBookKeys = new Set(
-        savedBooks.map((book) =>
-            `${book.title.trim().toLowerCase()}|${book.author.trim().toLowerCase()}`
-        )
+        savedBooks.map((book) => getBookKey(book))
     );
 
     const missingMasterBooks = starterLibrary.filter((book) => {
-        const key =
-            `${book.title.trim().toLowerCase()}|${book.author.trim().toLowerCase()}`;
-
-        return !savedBookKeys.has(key);
+        return !savedBookKeys.has(getBookKey(book));
     });
 
     library = [...savedBooks, ...missingMasterBooks];
+
     saveLibrary();
 }
-// ==========================================
-// Display Library
-// ==========================================
+
+function escapeHtml(value) {
+    return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
 function renderLibrary() {
-    const searchTerm = searchBooks.value.trim().toLowerCase();
+    const searchTerm = normalize(searchBooks.value);
     const selectedStatus = filterStatus.value;
 
     const filteredBooks = library.filter((book) => {
         const matchesSearch =
-            book.title.toLowerCase().includes(searchTerm) ||
-            book.author.toLowerCase().includes(searchTerm);
+            normalize(book.title).includes(searchTerm) ||
+            normalize(book.author).includes(searchTerm);
 
         const matchesStatus =
             selectedStatus === "all" ||
@@ -111,19 +102,23 @@ function renderLibrary() {
             <p class="empty-library">
                 📖 No books found.
                 <br><br>
-                Try a different search or add another book.
+                Try another search or add a new book.
             </p>
         `;
+
         return;
     }
 
     filteredBooks.forEach((book) => {
         const bookCard = document.createElement("article");
-        bookCard.className = "book-card";
 
-        const stars = book.rating > 0
-            ? "⭐".repeat(book.rating)
-            : "Not rated";
+        bookCard.className = "book-card";
+        bookCard.dataset.id = String(book.id);
+
+        const stars =
+            Number(book.rating) > 0
+                ? "⭐".repeat(Number(book.rating))
+                : "Not rated";
 
         const statusLabels = {
             tbr: "To Be Read",
@@ -132,8 +127,11 @@ function renderLibrary() {
         };
 
         bookCard.innerHTML = `
-            <h3>${book.title}</h3>
-            <p class="book-author">${book.author || "Unknown author"}</p>
+            <h3>${escapeHtml(book.title)}</h3>
+
+            <p class="book-author">
+                ${escapeHtml(book.author || "Unknown author")}
+            </p>
 
             <div class="book-meta">
                 <span class="book-badge">
@@ -144,26 +142,33 @@ function renderLibrary() {
                     ${stars}
                 </span>
 
-                ${book.favorite
-                    ? '<span class="book-badge">❤️ Favourite</span>'
-                    : ""}
+                ${
+                    book.favorite
+                        ? '<span class="book-badge">❤️ Favourite</span>'
+                        : ""
+                }
             </div>
 
-            ${book.notes
-                ? `<p class="book-notes">${book.notes}</p>`
-                : ""}
-       <div class="book-actions">
-    <button type="button">✏️ Edit</button>
-    <button type="button">🗑️ Delete</button>
-</div>
+            ${
+                book.notes
+                    ? `<p class="book-notes">${escapeHtml(book.notes)}</p>`
+                    : ""
+            }
+
+            <div class="book-actions">
+                <button type="button" data-action="edit">
+                    ✏️ Edit
+                </button>
+
+                <button type="button" data-action="delete">
+                    🗑️ Delete
+                </button>
+            </div>
         `;
 
         libraryGrid.appendChild(bookCard);
     });
 }
-// ==========================================
-// Update Reading Stats
-// ==========================================
 
 function updateStats() {
     totalBooks.textContent = library.length;
@@ -188,31 +193,29 @@ function updateStats() {
         (book) => Number(book.rating) > 0
     );
 
-    if (ratedBooks.length === 0) {
-        averageRating.textContent = "0.0 ⭐";
-        return;
-    }
-
-    const totalRating = ratedBooks.reduce(
-        (sum, book) => sum + Number(book.rating),
-        0
-    );
-
-    const average = totalRating / ratedBooks.length;
+    const average =
+        ratedBooks.length > 0
+            ? ratedBooks.reduce(
+                  (total, book) => total + Number(book.rating),
+                  0
+              ) / ratedBooks.length
+            : 0;
 
     averageRating.textContent = `${average.toFixed(1)} ⭐`;
 }
-// ==========================================
-// Add a New Book
-// ==========================================
+
+function refreshApp() {
+    renderLibrary();
+    updateStats();
+}
 
 bookForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const newBook = {
-        id: Date.now(),
+        id: `user-${Date.now()}`,
         title: bookTitle.value.trim(),
-        author: bookAuthor.value.trim(),
+        author: bookAuthor.value.trim() || "Unknown author",
         status: bookStatus.value,
         rating: Number(bookRating.value),
         notes: bookNotes.value.trim(),
@@ -222,8 +225,7 @@ bookForm.addEventListener("submit", (event) => {
     library.unshift(newBook);
 
     saveLibrary();
-    renderLibrary();
-    updateStats();
+    refreshApp();
 
     bookForm.reset();
 
@@ -231,16 +233,9 @@ bookForm.addEventListener("submit", (event) => {
         behavior: "smooth"
     });
 });
-// ==========================================
-// Search and Filter
-// ==========================================
 
 searchBooks.addEventListener("input", renderLibrary);
-
 filterStatus.addEventListener("change", renderLibrary);
-// ==========================================
-// Mobile Navigation
-// ==========================================
 
 menuButton.addEventListener("click", () => {
     mainNav.classList.toggle("open");
@@ -248,14 +243,17 @@ menuButton.addEventListener("click", () => {
 
 document.querySelectorAll(".nav-button").forEach((button) => {
     button.addEventListener("click", () => {
-        const viewId = button.dataset.view;
-        const targetSection = document.getElementById(viewId);
-
-        document.querySelectorAll(".nav-button").forEach((navButton) => {
-            navButton.classList.remove("active");
-        });
+        document
+            .querySelectorAll(".nav-button")
+            .forEach((navButton) => {
+                navButton.classList.remove("active");
+            });
 
         button.classList.add("active");
+
+        const targetSection = document.getElementById(
+            button.dataset.view
+        );
 
         if (targetSection) {
             targetSection.scrollIntoView({
@@ -266,9 +264,6 @@ document.querySelectorAll(".nav-button").forEach((button) => {
         mainNav.classList.remove("open");
     });
 });
-// ==========================================
-// Hades Picks
-// ==========================================
 
 hadesPick.addEventListener("click", () => {
     const tbrBooks = library.filter(
@@ -276,39 +271,37 @@ hadesPick.addEventListener("click", () => {
     );
 
     if (tbrBooks.length === 0) {
-        alert("Hades says your TBR shelf is empty. Add some books first!");
+        alert(
+            "Hades says your TBR shelf is empty. Add some books first!"
+        );
+
         return;
     }
 
-    const randomIndex = Math.floor(
-        Math.random() * tbrBooks.length
-    );
-
-    const chosenBook = tbrBooks[randomIndex];
+    const chosenBook =
+        tbrBooks[Math.floor(Math.random() * tbrBooks.length)];
 
     alert(
-        `🐈‍⬛ Hades picked:\n\n${chosenBook.title}\nby ${chosenBook.author || "Unknown author"}`
+        `🐈‍⬛ Hades picked:\n\n${chosenBook.title}\nby ${
+            chosenBook.author || "Unknown author"
+        }`
     );
 });
-// ==========================================
-// Continue Reading
-// ==========================================
 
 continueReading.addEventListener("click", () => {
-    const currentBooks = library.filter(
+    const currentBook = library.find(
         (book) => book.status === "reading"
     );
 
-    if (currentBooks.length === 0) {
-        alert("You do not have a book marked as Currently Reading yet.");
+    if (!currentBook) {
+        alert(
+            "You do not have a book marked as Currently Reading yet."
+        );
+
         return;
     }
 
-    const currentBook = currentBooks[0];
-
-    const searchText = `${currentBook.title} ${currentBook.author || ""}`;
-
-    searchBooks.value = searchText.trim();
+    searchBooks.value = currentBook.title;
     filterStatus.value = "all";
 
     renderLibrary();
@@ -317,58 +310,93 @@ continueReading.addEventListener("click", () => {
         behavior: "smooth"
     });
 });
-// ==========================================
-// Start the App
-// ==========================================
-
-loadLibrary();
-renderLibrary();
-updateStats();
-// ==============================
-// Edit + Delete Books
-// ==============================
 
 libraryGrid.addEventListener("click", (event) => {
-    const button = event.target.closest("button");
+    const button = event.target.closest(
+        "button[data-action]"
+    );
+
     if (!button) return;
 
-    const card = button.closest(".book-card");
-    if (!card) return;
+    const bookCard = button.closest(".book-card");
 
-    const title = card.querySelector("h3").textContent;
+    if (!bookCard) return;
 
-    const book = library.find(b => b.title === title);
+    const book = library.find(
+        (item) => String(item.id) === bookCard.dataset.id
+    );
+
     if (!book) return;
 
-    // Delete
-    if (button.textContent.includes("Delete")) {
-        if (!confirm(`Delete "${book.title}"?`)) return;
+    if (button.dataset.action === "delete") {
+        const confirmed = confirm(
+            `Delete "${book.title}"?`
+        );
 
-        library = library.filter(b => b.id !== book.id);
+        if (!confirmed) return;
+
+        library = library.filter(
+            (item) => String(item.id) !== String(book.id)
+        );
+
         saveLibrary();
-        renderLibrary();
-        updateStats();
+        refreshApp();
+
         return;
     }
 
-    // Edit
-    if (button.textContent.includes("Edit")) {
+    const newTitle = prompt("Book Title:", book.title);
 
-        const newTitle = prompt("Book Title:", book.title);
-        if (newTitle === null) return;
+    if (newTitle === null) return;
 
-        const newAuthor = prompt("Author:", book.author);
-        if (newAuthor === null) return;
+    const newAuthor = prompt("Author:", book.author);
 
-        const newNotes = prompt("Notes:", book.notes);
-        if (newNotes === null) return;
+    if (newAuthor === null) return;
 
-        book.title = newTitle;
-        book.author = newAuthor;
-        book.notes = newNotes;
+    const newStatus = prompt(
+        "Status: tbr, reading, or read",
+        book.status
+    );
 
-        saveLibrary();
-        renderLibrary();
-        updateStats();
+    if (newStatus === null) return;
+
+    const newRating = prompt(
+        "Rating: 0 to 5",
+        String(book.rating || 0)
+    );
+
+    if (newRating === null) return;
+
+    const newNotes = prompt(
+        "Notes:",
+        book.notes || ""
+    );
+
+    if (newNotes === null) return;
+
+    book.title = newTitle.trim() || book.title;
+    book.author =
+        newAuthor.trim() || "Unknown author";
+
+    const cleanedStatus =
+        newStatus.trim().toLowerCase();
+
+    if (
+        ["tbr", "reading", "read"].includes(cleanedStatus)
+    ) {
+        book.status = cleanedStatus;
     }
+
+    book.rating = Math.min(
+        5,
+        Math.max(0, Number(newRating) || 0)
+    );
+
+    book.notes = newNotes.trim();
+
+    saveLibrary();
+    refreshApp();
 });
+
+loadLibrary();
+refreshApp();
