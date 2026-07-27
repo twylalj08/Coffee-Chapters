@@ -1395,9 +1395,19 @@ body {
 }
 
 .hero-button.secondary {
-  background: var(--cottage-rose);
-  color: white;
-  border-color: #ad7470;
+    background: linear-gradient(
+        180deg,
+        #ad8b63 0%,
+        #8d6b47 100%
+    );
+
+    color: #fffdf7;
+
+    border: 1px solid #755638;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),
+        0 8px 18px rgba(74,52,34,.18);
 }
 
 .reading-room {
