@@ -158,14 +158,25 @@ main {
 }
 
 .room-heading {
+  position: relative;
   text-align: center;
   margin: 0 auto 22px;
   max-width: 700px;
+  padding: 18px 16px 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(31, 18, 12, 0.48),
+      rgba(31, 18, 12, 0.14) 58%,
+      transparent 78%
+    );
 }
 
 .eyebrow {
   margin: 0 0 8px;
-  color: var(--gold);
+  color: #e7bd73;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 800;
@@ -183,15 +194,24 @@ main {
 
 .room-heading h1 {
   font-size: clamp(2.8rem, 10vw, 6.4rem);
+  color: #fff3df;
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.72),
+    0 0 22px rgba(0, 0, 0, 0.32);
 }
 
 .room-heading h1 span {
-  color: #e0b86f;
+  color: #e7b85f;
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.72),
+    0 0 16px rgba(115, 67, 28, 0.28);
 }
 
 .room-heading > p:last-child {
   margin: 12px 0 0;
-  color: var(--muted);
+  color: #ead7bd;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.6);
+  font-weight: 700;
 }
 
 .room-scene {
@@ -1042,6 +1062,10 @@ body.spring .arched-window {
 
   .reading-room {
     padding-top: 40px;
+  }
+
+  .room-heading {
+    padding: 16px 12px 20px;
   }
 
   .room-heading h1 {
