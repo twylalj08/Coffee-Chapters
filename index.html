@@ -1,180 +1,239 @@
-root {
-  --ink: #f7ead5;
-  --muted: #d7bea0;
-  --cream: #f3e2c7;
-  --coffee: #3a2418;
-  --coffee-dark: #1d120d;
-  --walnut: #4a2b1d;
-  --walnut-light: #70442e;
-  --gold: #d7a95f;
-  --green: #48634c;
-  --rust: #a85f3f;
-  --shadow: rgba(0, 0, 0, 0.4);
-  --glass: rgba(25, 14, 9, 0.72);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Coffee & Chapters — Twyla's cozy personal reading room.">
+  <meta name="theme-color" content="#24160f">
 
-* {
-  box-sizing: border-box;
-}
+  <title>Coffee & Chapters — The Reading Room</title>
 
-html {
-  scroll-behavior: smooth;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  color: var(--ink);
-  background:
-    radial-gradient(circle at top, rgba(147, 93, 57, 0.24), transparent 38%),
-    linear-gradient(180deg, #23140f 0%, #120b08 100%);
-  font-family: "Nunito", sans-serif;
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-button,
-a {
-  font: inherit;
-}
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-button {
-  color: inherit;
-}
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span>✨</span>
+    <span>🌿</span>
+    <span>✨</span>
+    <span>🌿</span>
+  </div>
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  <header class="site-header">
+    <a class="brand" href="#readingRoom">
+      <span class="brand-icon">☕</span>
 
-.ambient {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
+      <span>
+        <strong>Coffee &amp; Chapters</strong>
+        <small>Enter The Reading Room</small>
+      </span>
+    </a>
 
-.ambient span {
-  position: absolute;
-  opacity: 0.14;
-  font-size: clamp(1.3rem, 3vw, 2rem);
-  animation: drift 12s ease-in-out infinite;
-}
+    <button id="seasonButton" class="season-button" type="button">
+      ☀️ Summer
+    </button>
+  </header>
 
-.ambient span:nth-child(1) {
-  top: 14%;
-  left: 9%;
-}
+  <main>
+    <section id="readingRoom" class="reading-room">
+      <div class="room-heading">
+        <p class="eyebrow">The Reading Room</p>
 
-.ambient span:nth-child(2) {
-  top: 22%;
-  right: 8%;
-  animation-delay: -3s;
-}
+        <h1 id="greeting">
+          Welcome home, <span>Twyla.</span>
+        </h1>
 
-.ambient span:nth-child(3) {
-  bottom: 20%;
-  left: 18%;
-  animation-delay: -6s;
-}
+        <p>Stay as long as you’d like.</p>
+      </div>
 
-.ambient span:nth-child(4) {
-  right: 14%;
-  bottom: 12%;
-  animation-delay: -9s;
-}
+      <div class="room-scene">
+        <div class="string-lights" aria-hidden="true">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
 
-.site-header {
-  width: min(1180px, calc(100% - 28px));
-  margin: 14px auto 0;
-  padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  position: sticky;
-  top: 10px;
-  z-index: 30;
-  border: 1px solid rgba(255, 224, 181, 0.14);
-  border-radius: 20px;
-  background: rgba(29, 18, 13, 0.82);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(14px);
-}
+        <span class="hanging-plant plant-one">🌿</span>
+        <span class="hanging-plant plant-two">🪴</span>
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
+        <button
+          class="bookcase left-bookcase"
+          data-shelf="Dark Romance"
+          type="button"
+        >
+          <span class="shelf-label">Dark Romance</span>
+          <span class="book-row row-one"></span>
+          <span class="book-row row-two"></span>
+          <span class="book-row row-three"></span>
+        </button>
 
-.brand-icon {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #8f5c3d, #4a2b1d);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-}
+        <div class="arched-window">
+          <div class="sky"></div>
 
-.brand strong {
-  display: block;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.2rem, 4vw, 1.7rem);
-  line-height: 1;
-}
+          <span
+            id="windowDecoration"
+            class="window-decoration"
+          >
+            🌻
+          </span>
 
-.brand small {
-  display: block;
-  margin-top: 3px;
-  color: var(--muted);
-  font-size: 0.72rem;
-}
+          <i class="window-bar vertical"></i>
+          <i class="window-bar horizontal"></i>
+        </div>
 
-.season-button {
-  border: 1px solid rgba(255, 226, 189, 0.18);
-  border-radius: 999px;
-  padding: 9px 13px;
-  background: rgba(100, 65, 43, 0.58);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-  cursor: pointer;
-}
+        <button
+          class="bookcase right-bookcase"
+          data-shelf="Paranormal"
+          type="button"
+        >
+          <span class="shelf-label">Paranormal</span>
+          <span class="book-row row-four"></span>
+          <span class="book-row row-five"></span>
+          <span class="book-row row-six"></span>
+        </button>
 
-main {
-  width: min(1180px, calc(100% - 24px));
-  margin: 0 auto;
-}
+        <div class="reading-nook">
+          <div class="floor-lamp">
+            <i></i>
+          </div>
 
-.reading-room {
-  padding: 54px 0 32px;
-}
+          <div class="armchair" aria-hidden="true">
+            <span class="chair-back"></span>
+            <span class="chair-seat"></span>
+            <span class="chair-arm left"></span>
+            <span class="chair-arm right"></span>
+          </div>
 
-.room-heading {
-  text-align: center;
-  margin: 0 auto 22px;
-  max-width: 700px;
-}
+          <button
+            id="hadesButton"
+            class="hades"
+            type="button"
+            aria-label="Pet Hades"
+          >
+            <span class="cat">🐈‍⬛</span>
 
-.eyebrow {
-  margin: 0 0 8px;
-  color: var(--gold);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: 0.73rem;
-}
+            <span id="hadesMessage" class="cat-message">
+              Hades saved your seat.
+            </span>
+          </button>
 
-.room-heading h1,
-.section-heading h2,
-.coming-soon h2 {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 700;
-  line-height: 0.95;
-}
+          <button
+            id="coffeeButton"
+            class="coffee-table"
+            type="button"
+            aria-label="Open coffee log"
+          >
+            <span class="table-top"></span>
+            <span class="mug">☕</span>
+            <span class="current-book">Brody</span>
+          </button>
+        </div>
 
-.room-heading h1 {
-  font-size: clamp(2.8rem, 10vw, 6.4rem);
+        <div class="wood-floor"></div>
+      </div>
+
+      <nav class="room-directory" aria-label="Reading room areas">
+        <a href="#library">📚 Library</a>
+        <a href="#counter">☕ Café Counter</a>
+        <a href="#journal">📝 Writing Desk</a>
+        <a href="#garden">🌱 Garden Door</a>
+      </nav>
+    </section>
+
+    <section id="counter" class="counter-section">
+      <div class="section-heading">
+        <p class="eyebrow">The café counter</p>
+        <h2>Your reading life</h2>
+      </div>
+
+      <div class="chalkboard-grid">
+        <article>
+          <span>Currently Reading</span>
+          <strong id="currentBook">
+            Choose your next adventure...
+          </strong>
+          <small id="currentAuthor">
+            No current book selected
+          </small>
+        </article>
+
+        <article>
+          <span>My Library</span>
+          <strong id="libraryCount">0 Books</strong>
+          <small>Your complete collection</small>
+        </article>
+
+        <article>
+          <span>To Be Read</span>
+          <strong id="tbrCount">0 Books</strong>
+          <small>Waiting on your shelves</small>
+        </article>
+
+        <article>
+          <span>Finished</span>
+          <strong id="finishedCount">0 Books</strong>
+          <small id="challengeProgress">
+            0 books finished
+          </small>
+        </article>
+      </div>
+
+      <div class="challenge-card">
+        <div class="challenge-top">
+          <span>2026 Reading Challenge</span>
+          <strong id="challengeGoal">Goal: 50</strong>
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+        <p id="challengeMessage">
+          Every finished book brings the shelves to life.
+        </p>
+      </div>
+    </section>
+
+    <section id="library" class="coming-soon">
+      <p class="eyebrow">Behind the next door</p>
+
+      <h2>Your real library is coming next.</h2>
+
+      <p>
+        Dark romance, paranormal, quick reads, thrillers,
+        Halloween and Christmas — all inside The Reading Room.
+      </p>
+    </section>
+  </main>
+
+  <div
+    id="roomNotice"
+    class="room-notice"
+    aria-live="polite"
+  ></div>
+
+  <footer>
+    <p>Made with coffee, books and a little black-cat magic.</p>
+    <p>Coffee &amp; Chapters © 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
