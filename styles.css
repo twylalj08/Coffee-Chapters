@@ -932,3 +932,69 @@ body.summer-theme {
     transform: translateY(-6px) rotate(5deg);
   }
 }
+
+/* Cozy Coffee & Chapters upgrade */
+
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(232, 185, 109, 0.28), transparent 26%),
+    radial-gradient(circle at 85% 30%, rgba(169, 93, 42, 0.14), transparent 28%),
+    linear-gradient(180deg, #f8efe2 0%, #ead7c1 100%);
+  background-attachment: fixed;
+}
+
+.site-header {
+  box-shadow: 0 8px 30px rgba(47, 29, 22, 0.28);
+}
+
+.brand-icon {
+  animation: cozyCoffeeFloat 3s ease-in-out infinite;
+}
+
+main section {
+  animation: cozySectionArrival 0.7s ease both;
+}
+
+.dashboard-card,
+.book-card,
+.challenge-card,
+.current-read-card {
+  border: 1px solid rgba(169, 93, 42, 0.13);
+  box-shadow:
+    0 14px 35px rgba(47, 29, 22, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.dashboard-card:hover,
+.book-card:hover,
+.challenge-card:hover,
+.current-read-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 42px rgba(47, 29, 22, 0.18);
+}
+
+@keyframes cozyCoffeeFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+
+@keyframes cozySectionArrival {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
