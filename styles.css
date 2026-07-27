@@ -914,3 +914,21 @@ body.summer-theme {
     transition-duration: 0.01ms !important;
   }
 }
+.hades-bounce .cat-body {
+  animation: hadesBounce 0.5s ease;
+}
+
+@keyframes hadesBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  40% {
+    transform: translateY(-18px) rotate(-7deg);
+  }
+
+  70% {
+    transform: translateY(-6px) rotate(5deg);
+  }
+}
