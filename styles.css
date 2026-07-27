@@ -1415,3 +1415,16 @@ body {
 footer {
   color: #6c5e54;
 }
+/* Cottagecore colour variables */
+
+:root {
+  --cottage-cream: #f7f0df;
+  --cottage-paper: #fffaf0;
+  --cottage-sage: #7f9270;
+  --cottage-sage-dark: #59664f;
+  --cottage-rose: #c98f8a;
+  --cottage-clay: #b8785f;
+  --cottage-gold: #d8b56b;
+  --cottage-wood: #76513d;
+  --cottage-ink: #40372f;
+}
