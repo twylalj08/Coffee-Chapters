@@ -1317,7 +1317,7 @@ body.spring .arched-window {
   --cottage-paper: #fffaf0;
   --cottage-sage: #7f9270;
   --cottage-sage-dark: #59664f;
-  --cottage-rose: #c98f8a;
+  --cottage-rose: #b68a63;
   --cottage-clay: #b8785f;
   --cottage-gold: #d8b56b;
   --cottage-wood: #76513d;
@@ -1432,7 +1432,7 @@ footer {
   --cottage-paper: #fffaf0;
   --cottage-sage: #7f9270;
   --cottage-sage-dark: #59664f;
-  --cottage-rose: #c98f8a;
+  --cottage-rose: #b68a63;
   --cottage-clay: #b8785f;
   --cottage-gold: #d8b56b;
   --cottage-wood: #76513d;
@@ -1449,10 +1449,14 @@ footer {
 .brand strong {
   color: var(--cottage-sage-dark);
 }
-
 .brand-icon {
-  background: var(--cottage-rose);
+
+  background: #b68a63;
+
+  color: #fffdf7;
+
 }
+
 
 .season-button {
   background: var(--cottage-sage);
