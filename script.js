@@ -57,14 +57,31 @@ function saveLibrary() {
 function loadLibrary() {
     const savedLibrary = localStorage.getItem(STORAGE_KEY);
 
+    let savedBooks = [];
+
     if (savedLibrary) {
         try {
-            library = JSON.parse(savedLibrary);
+            savedBooks = JSON.parse(savedLibrary);
         } catch (error) {
             console.error("Could not load the saved library:", error);
-            library = [];
         }
     }
+
+    const savedBookKeys = new Set(
+        savedBooks.map((book) =>
+            `${book.title.trim().toLowerCase()}|${book.author.trim().toLowerCase()}`
+        )
+    );
+
+    const missingMasterBooks = starterLibrary.filter((book) => {
+        const key =
+            `${book.title.trim().toLowerCase()}|${book.author.trim().toLowerCase()}`;
+
+        return !savedBookKeys.has(key);
+    });
+
+    library = [...savedBooks, ...missingMasterBooks];
+    saveLibrary();
 }
 // ==========================================
 // Display Library
