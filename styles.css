@@ -1348,3 +1348,22 @@ url("0783363C-E22D-4271-92A6-30B04E4556B5.png")
         min-height: 82px;
     }
 }
+.hanging-vines,
+.cottage-sign,
+.cottage-room {
+    display: none !important;
+}
+
+.cottage-home {
+    min-height: auto;
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    padding-top: 128vw;
+}
+
+.cottage-actions {
+    padding-top: 0 !important;
+    position: relative;
+    z-index: 5;
+}
