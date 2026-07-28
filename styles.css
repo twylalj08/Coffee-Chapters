@@ -1367,3 +1367,28 @@ url("0783363C-E22D-4271-92A6-30B04E4556B5.png")
     position: relative;
     z-index: 5;
 }
+/* Clickable invisible buttons over the buttons inside the room picture */
+.cottage-actions {
+    position: absolute;
+    top: 56%;
+    left: 3%;
+    width: 94%;
+    height: 9.5%;
+    margin: 0;
+    padding: 0 !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.4%;
+    z-index: 20;
+}
+
+.cottage-button {
+    width: 100%;
+    height: 100%;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 0;
+}
