@@ -2,231 +2,812 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Coffee & Chapters | Storybook Cottage</title>
 
-    <meta name="description" content="A cozy digital reading cottage to track books, TBRs, favorites, and adventures.">
+    <meta
+        name="description"
+        content="A cozy digital reading cottage for books, coffee, plants, and Hades."
+    >
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
-      <div class="app-shell">
+
+    <div class="app-shell">
 
         <header class="site-header">
-            <div class="brand">
-                <p class="eyebrow">Welcome to</p>
-                <h1>Coffee & Chapters</h1>
-                <p class="tagline">Your little storybook cottage for books, coffee, and cozy reading days.</p>
+
+            <div class="mini-brand">
+                <span>☕</span>
+                <strong>Coffee & Chapters</strong>
             </div>
 
-            <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation">
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+                aria-label="Open navigation"
+            >
                 ☰
             </button>
 
-            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-                <button class="nav-button active" type="button" data-view="home">Home</button>
-                <button class="nav-button" type="button" data-view="library">Library</button>
-                <button class="nav-button" type="button" data-view="add-book">Add Book</button>
-                <button class="nav-button" type="button" data-view="stats">Stats</button>
+            <nav
+                class="main-nav"
+                id="mainNav"
+                aria-label="Main navigation"
+            >
+                <button
+                    class="nav-button active"
+                    type="button"
+                    data-view="home"
+                >
+                    Cottage
+                </button>
+
+                <button
+                    class="nav-button"
+                    type="button"
+                    data-view="library"
+                >
+                    Library
+                </button>
+
+                <button
+                    class="nav-button"
+                    type="button"
+                    data-view="add-book"
+                >
+                    Add Book
+                </button>
+
+                <button
+                    class="nav-button"
+                    type="button"
+                    data-view="stats"
+                >
+                    Stats
+                </button>
             </nav>
+
         </header>
-                <main class="content">
 
-            <section class="card hero-card" id="home">
 
-                <span class="section-label">☕ Welcome Home</span>
+        <main class="content">
 
-                <h2>Settle in with a good book.</h2>
+            <section
+                class="cottage-home"
+                id="home"
+                aria-label="Coffee and Chapters storybook cottage"
+            >
 
-                <p class="hero-text">
-                    Welcome to your cozy reading cottage. Keep track of your adventures,
-                    discover your next favorite book, and let Hades help you choose what
-                    to read next.
-                </p>
+                <div class="hanging-vines" aria-hidden="true">
+                    🌿　🌿　🌿　🌿
+                </div>
 
-                <div class="hero-actions">
-                    <button class="primary-button" id="continueReading">
-                        📖 Continue Reading
+
+                <div class="cottage-sign">
+
+                    <span class="sign-coffee">☕</span>
+
+                    <h1>Coffee & Chapters</h1>
+
+                    <p>
+                        Every book is another story brought home.
+                    </p>
+
+                </div>
+
+
+                <div class="cottage-room">
+
+
+                    <aside
+                        class="bookshelf bookshelf-left"
+                        aria-hidden="true"
+                    >
+
+                        <div class="shelf-books">
+                            ▥ ▥ ▥ ▥ ▥
+                        </div>
+
+                        <div class="shelf-books">
+                            ▥ ▥ ▥ ▥
+                        </div>
+
+                        <div class="shelf-books">
+                            ▥ ▥ ▥ ▥ ▥
+                        </div>
+
+                        <div class="shelf-pothos">
+                            🌿
+                        </div>
+
+                    </aside>
+
+
+                    <div
+                        class="window-area"
+                        aria-label="Rainy cottage window"
+                    >
+
+                        <div class="arched-window">
+
+                            <div class="stormy-sky"></div>
+
+                            <div class="mountains"></div>
+
+                            <div class="tree-line">
+                                ♠ ♠ ♠　♠ ♠
+                            </div>
+
+                            <div class="rain rain-one"></div>
+
+                            <div class="rain rain-two"></div>
+
+                            <div class="window-frame"></div>
+
+                        </div>
+
+
+                        <div class="window-sill">
+
+                            <span title="Pothos cutting">
+                                🌱
+                            </span>
+
+                            <span class="propagation-jar">
+                                ◯
+                            </span>
+
+                            <span class="propagation-jar">
+                                ◯
+                            </span>
+
+                            <span title="Spider plant">
+                                🌿
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <aside
+                        class="bookshelf bookshelf-right"
+                        aria-hidden="true"
+                    >
+
+                        <div class="shelf-books">
+                            ▥ ▥ ▥ ▥ ▥
+                        </div>
+
+                        <div class="shelf-books">
+                            ▥ ▥ ▥ ▥
+                        </div>
+
+                        <div class="shelf-books">
+                            ▥ ▥ ▥ ▥ ▥
+                        </div>
+
+                        <div class="rolling-ladder">
+                            ╱╱
+                        </div>
+
+                        <div class="shelf-pothos">
+                            🌿
+                        </div>
+
+                    </aside>
+
+
+                    <div
+                        class="monstera-plant"
+                        id="monsteraPlant"
+                        aria-label="Large monstera plant"
+                    >
+                        🌿
+                    </div>
+
+
+                    <div
+                        class="reading-chair"
+                        aria-label="Black reading chair"
+                    >
+
+                        <div class="chair-back"></div>
+
+                        <div class="chair-seat"></div>
+
+                        <div class="chair-pillow">
+                            Books<br>
+                            Coffee<br>
+                            Plants<br>
+                            Cats ♥
+                        </div>
+
+                        <div class="chair-blanket"></div>
+
+                    </div>
+
+
+                    <div
+                        class="coffee-table"
+                        aria-label="Coffee table"
+                    >
+
+                        <div class="coffee-mug">
+                            ☕
+
+                            <span class="coffee-steam">
+                                〰
+                            </span>
+                        </div>
+
+                        <div class="table-books">
+                            ▰<br>
+                            ▰<br>
+                            ▰
+                        </div>
+
+                        <div class="table-candle">
+                            🕯️
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="fireplace"
+                        aria-label="Glowing stone fireplace"
+                    >
+
+                        <div class="fireplace-mantel">
+
+                            <span>🕯️</span>
+
+                            <span>🌿</span>
+
+                            <span>🕯️</span>
+
+                        </div>
+
+                        <div class="fireplace-opening">
+
+                            <span class="fire">
+                                🔥
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="watering-can"
+                        id="wateringCan"
+                        type="button"
+                        aria-label="Water the plants"
+                        title="Water the plants"
+                    >
+                        🪣
+                        <span>💧</span>
                     </button>
 
-                    <button class="secondary-button" id="hadesPick">
-                        🐈‍⬛ Hades Picks
+
+                    <div
+                        class="hades-corner"
+                        aria-label="Hades' cozy corner"
+                    >
+
+                        <div class="cat-bed">
+
+                            <span
+                                class="hades-cat"
+                                title="Hades"
+                            >
+                                🐈‍⬛
+                            </span>
+
+                        </div>
+
+                        <div class="mouse-toy">
+                            🐁
+                        </div>
+
+                        <div class="cat-bowls">
+
+                            <div class="food-bowl">
+                                HADES
+                                <br>
+                                <span>••••</span>
+                            </div>
+
+                            <div class="water-bowl">
+                                💧
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="cottage-actions">
+
+                    <button
+                        class="cottage-button"
+                        id="continueReading"
+                        type="button"
+                    >
+
+                        <span class="cottage-button-icon">
+                            📖
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Continue Reading
+                            </strong>
+
+                            <small>
+                                Pick up where you left off.
+                            </small>
+
+                        </span>
+
                     </button>
+
+
+                    <button
+                        class="cottage-button"
+                        id="hadesPick"
+                        type="button"
+                    >
+
+                        <span class="cottage-button-icon">
+                            🐾
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Hades Pick
+                            </strong>
+
+                            <small>
+                                Let Hades choose your next read.
+                            </small>
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="cottage-button"
+                        id="enterLibrary"
+                        type="button"
+                    >
+
+                        <span class="cottage-button-icon">
+                            📚
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Enter Library
+                            </strong>
+
+                            <small>
+                                Browse your bookshelves.
+                            </small>
+
+                        </span>
+
+                    </button>
+
                 </div>
 
             </section>
-                        <section class="dashboard-grid" aria-label="Reading dashboard">
+
+
+            <section
+                class="dashboard-grid"
+                aria-label="Reading dashboard"
+            >
 
                 <article class="card stat-card">
-                    <span class="stat-icon">📚</span>
-                    <p class="stat-label">Total Books</p>
-                    <p class="stat-number" id="totalBooks">0</p>
+
+                    <span class="stat-icon">
+                        📚
+                    </span>
+
+                    <p class="stat-label">
+                        Total Books
+                    </p>
+
+                    <p
+                        class="stat-number"
+                        id="totalBooks"
+                    >
+                        0
+                    </p>
+
                 </article>
 
-                <article class="card stat-card">
-                    <span class="stat-icon">📖</span>
-                    <p class="stat-label">Currently Reading</p>
-                    <p class="stat-number" id="readingCount">0</p>
-                </article>
 
                 <article class="card stat-card">
-                    <span class="stat-icon">🌿</span>
-                    <p class="stat-label">On My TBR</p>
-                    <p class="stat-number" id="tbrCount">0</p>
+
+                    <span class="stat-icon">
+                        📖
+                    </span>
+
+                    <p class="stat-label">
+                        Currently Reading
+                    </p>
+
+                    <p
+                        class="stat-number"
+                        id="readingCount"
+                    >
+                        0
+                    </p>
+
                 </article>
 
+
                 <article class="card stat-card">
-                    <span class="stat-icon">⭐</span>
-                    <p class="stat-label">Finished</p>
-                    <p class="stat-number" id="readCount">0</p>
+
+                    <span class="stat-icon">
+                        🌿
+                    </span>
+
+                    <p class="stat-label">
+                        On My TBR
+                    </p>
+
+                    <p
+                        class="stat-number"
+                        id="tbrCount"
+                    >
+                        0
+                    </p>
+
+                </article>
+
+
+                <article class="card stat-card">
+
+                    <span class="stat-icon">
+                        ⭐
+                    </span>
+
+                    <p class="stat-label">
+                        Finished
+                    </p>
+
+                    <p
+                        class="stat-number"
+                        id="readCount"
+                    >
+                        0
+                    </p>
+
                 </article>
 
             </section>
-                        <section class="card" id="library">
+
+
+            <section
+                class="card"
+                id="library"
+            >
 
                 <div class="section-header">
-                    <h2>📚 My Library</h2>
-                    <p>Your cozy collection of adventures.</p>
+
+                    <h2>
+                        📚 My Library
+                    </h2>
+
+                    <p>
+                        Your cozy collection of adventures.
+                    </p>
+
                 </div>
+
 
                 <div class="library-controls">
 
                     <input
                         type="search"
                         id="searchBooks"
-                        placeholder="Search by title or author...">
+                        placeholder="Search by title or author..."
+                    >
 
                     <select id="filterStatus">
-                        <option value="all">All Books</option>
-                        <option value="tbr">To Be Read</option>
-                        <option value="reading">Currently Reading</option>
-                        <option value="read">Finished</option>
-                        <option value="favorite">Favorites</option>
+
+                        <option value="all">
+                            All Books
+                        </option>
+
+                        <option value="tbr">
+                            To Be Read
+                        </option>
+
+                        <option value="reading">
+                            Currently Reading
+                        </option>
+
+                        <option value="read">
+                            Finished
+                        </option>
+
+                        <option value="favorite">
+                            Favorites
+                        </option>
+
                     </select>
 
                 </div>
 
-                <div id="libraryGrid" class="library-grid">
+
+                <div
+                    id="libraryGrid"
+                    class="library-grid"
+                >
 
                     <p class="empty-library">
                         📖 Your shelves are waiting...
-                        <br><br>
-                        Add your first book to begin your collection.
                     </p>
 
                 </div>
 
             </section>
-                        <section class="card" id="add-book">
+
+
+            <section
+                class="card"
+                id="add-book"
+            >
 
                 <div class="section-header">
-                    <h2>➕ Add a Book</h2>
-                    <p>Add a new story to your cottage shelves.</p>
+
+                    <h2>
+                        ➕ Add a Book
+                    </h2>
+
+                    <p>
+                        Add a new story to your cottage shelves.
+                    </p>
+
                 </div>
 
-                <form id="bookForm" class="book-form">
+
+                <form
+                    id="bookForm"
+                    class="book-form"
+                >
 
                     <label>
+
                         Book Title
+
                         <input
                             type="text"
                             id="bookTitle"
                             placeholder="Enter the book title"
-                            required>
+                            required
+                        >
+
                     </label>
 
+
                     <label>
+
                         Author
+
                         <input
                             type="text"
                             id="bookAuthor"
-                            placeholder="Enter the author">
+                            placeholder="Enter the author"
+                        >
+
                     </label>
 
+
                     <label>
+
                         Reading Status
+
                         <select id="bookStatus">
-                            <option value="tbr">To Be Read</option>
-                            <option value="reading">Currently Reading</option>
-                            <option value="read">Finished</option>
+
+                            <option value="tbr">
+                                To Be Read
+                            </option>
+
+                            <option value="reading">
+                                Currently Reading
+                            </option>
+
+                            <option value="read">
+                                Finished
+                            </option>
+
                         </select>
+
                     </label>
 
+
                     <label>
+
                         Rating
+
                         <select id="bookRating">
-                            <option value="0">Not Rated</option>
-                            <option value="1">⭐</option>
-                            <option value="2">⭐⭐</option>
-                            <option value="3">⭐⭐⭐</option>
-                            <option value="4">⭐⭐⭐⭐</option>
-                            <option value="5">⭐⭐⭐⭐⭐</option>
+
+                            <option value="0">
+                                Not Rated
+                            </option>
+
+                            <option value="1">
+                                ⭐
+                            </option>
+
+                            <option value="2">
+                                ⭐⭐
+                            </option>
+
+                            <option value="3">
+                                ⭐⭐⭐
+                            </option>
+
+                            <option value="4">
+                                ⭐⭐⭐⭐
+                            </option>
+
+                            <option value="5">
+                                ⭐⭐⭐⭐⭐
+                            </option>
+
                         </select>
+
                     </label>
+
 
                     <label class="full-width">
+
                         Notes
+
                         <textarea
                             id="bookNotes"
                             rows="4"
-                            placeholder="Add your thoughts, favourite moments, or warnings..."></textarea>
+                            placeholder="Add your thoughts, favourite moments, or warnings..."
+                        ></textarea>
+
                     </label>
+
 
                     <label class="favorite-option full-width">
-                        <input type="checkbox" id="bookFavorite">
+
+                        <input
+                            type="checkbox"
+                            id="bookFavorite"
+                        >
+
                         Mark as a favourite
+
                     </label>
 
-                    <button class="primary-button full-width" type="submit">
+
+                    <button
+                        class="primary-button full-width"
+                        type="submit"
+                    >
                         Add Book to My Library
                     </button>
 
                 </form>
 
             </section>
-                        <section class="card" id="stats">
+
+
+            <section
+                class="card"
+                id="stats"
+            >
 
                 <div class="section-header">
-                    <h2>📊 Reading Stats</h2>
-                    <p>Your reading journey at a glance.</p>
+
+                    <h2>
+                        📊 Reading Stats
+                    </h2>
+
+                    <p>
+                        Your reading journey at a glance.
+                    </p>
+
                 </div>
+
 
                 <div class="dashboard-grid">
 
                     <article class="stat-card">
-                        <p class="stat-label">Favorite Books</p>
-                        <p class="stat-number" id="favoriteCount">0</p>
+
+                        <p class="stat-label">
+                            Favorite Books
+                        </p>
+
+                        <p
+                            class="stat-number"
+                            id="favoriteCount"
+                        >
+                            0
+                        </p>
+
                     </article>
 
+
                     <article class="stat-card">
-                        <p class="stat-label">Average Rating</p>
-                        <p class="stat-number" id="averageRating">0.0 ⭐</p>
+
+                        <p class="stat-label">
+                            Average Rating
+                        </p>
+
+                        <p
+                            class="stat-number"
+                            id="averageRating"
+                        >
+                            0.0 ⭐
+                        </p>
+
                     </article>
 
                 </div>
 
             </section>
 
+
             <section class="card">
 
                 <div class="section-header">
-                    <h2>📝 Recent Activity</h2>
-                    <p>Your latest reading updates will appear here.</p>
+
+                    <h2>
+                        📝 Recent Activity
+                    </h2>
+
+                    <p>
+                        Your latest reading updates will appear here.
+                    </p>
+
                 </div>
+
 
                 <div id="activityFeed">
 
                     <p class="empty-library">
                         Nothing here yet...
-                        <br><br>
-                        Once you start adding and finishing books, your reading history will appear here.
                     </p>
 
                 </div>
@@ -236,8 +817,52 @@
         </main>
 
     </div>
-<script src="library.js?v=3"></script>
-<script src="script.js?v=3"></script>
+
+
+    <script src="library.js?v=3"></script>
+
+    <script src="script.js?v=4"></script>
+
+
+    <script>
+
+        const wateringCan =
+            document.getElementById("wateringCan");
+
+        const monsteraPlant =
+            document.getElementById("monsteraPlant");
+
+        wateringCan?.addEventListener("click", function () {
+
+            wateringCan.classList.add("pouring");
+
+            monsteraPlant?.classList.add("watered");
+
+            setTimeout(function () {
+
+                wateringCan.classList.remove("pouring");
+
+                monsteraPlant?.classList.remove("watered");
+
+            }, 1200);
+
+        });
+
+
+        const enterLibrary =
+            document.getElementById("enterLibrary");
+
+        enterLibrary?.addEventListener("click", function () {
+
+            document
+                .getElementById("library")
+                ?.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        });
+
+    </script>
 
 </body>
 </html>
