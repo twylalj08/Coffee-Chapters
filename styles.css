@@ -1241,3 +1241,109 @@ button {
         border-radius:15px;
     }
 }
+/* ===== Coffee & Chapters inspiration design ===== */
+
+body {
+    background:
+        linear-gradient(rgba(20, 12, 8, 0.45), rgba(20, 12, 8, 0.65)),
+        repeating-linear-gradient(
+            90deg,
+            #24150f 0,
+            #24150f 46px,
+            #2d1b13 46px,
+            #2d1b13 50px
+        );
+}
+
+.app-shell {
+    width: min(100%, 1100px);
+    background: #1d110c;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.75);
+}
+
+.site-header {
+    background:
+        linear-gradient(rgba(22, 12, 8, 0.96), rgba(35, 20, 13, 0.96));
+    border-bottom: 3px solid #6b4028;
+}
+
+.mini-brand strong {
+    font-size: 1.7rem;
+}
+
+.content {
+    padding: 12px;
+}
+
+.cottage-home {
+    min-height: 0;
+    padding-top: 0;
+    border: 3px solid #5b3422;
+    border-radius: 8px;
+    background:
+        linear-gradient(
+            rgba(15, 8, 5, 0.08),
+            rgba(15, 8, 5, 0.18)
+        ),
+        url("0783363C-E22D-4271-AF4B-26E712959465.jpeg")
+        center top / cover no-repeat;
+    box-shadow:
+        inset 0 0 35px rgba(0, 0, 0, 0.55),
+        0 18px 35px rgba(0, 0, 0, 0.5);
+}
+
+.cottage-sign,
+.cottage-room {
+    display: none;
+}
+
+.cottage-actions {
+    padding-top: 72vw;
+    width: 96%;
+    max-width: none;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.cottage-button {
+    min-height: 90px;
+    border: 3px double #714529;
+    border-radius: 10px;
+    background:
+        linear-gradient(#fff3d9, #e4cba6);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.7),
+        0 6px 12px rgba(0, 0, 0, 0.45);
+}
+
+.card,
+.stat-card {
+    border: 3px double #704226;
+    border-radius: 10px;
+    background:
+        linear-gradient(#fff5df, #e8cfaa);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, 0.55),
+        0 8px 16px rgba(0, 0, 0, 0.42);
+}
+
+.section-header h2,
+.book-card h3,
+.cottage-button strong {
+    font-family: "Cormorant Garamond", serif;
+}
+
+@media (max-width: 600px) {
+    .cottage-home {
+        background-position: top center;
+    }
+
+    .cottage-actions {
+        padding-top: 145vw;
+        grid-template-columns: 1fr;
+    }
+
+    .cottage-button {
+        min-height: 82px;
+    }
+}
