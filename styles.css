@@ -125,16 +125,17 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 26px;
     background:
-        linear-gradient(
-            rgba(29, 21, 17, 0.08),
-            rgba(29, 21, 17, 0.28)
-        ),
-        linear-gradient(
-            180deg,
-            #705844 0%,
-            #4c372c 54%,
-            #2d211b 100%
-        );
+    linear-gradient(
+        rgba(29, 21, 17, 0.08),
+        rgba(29, 21, 17, 0.28)
+    ),
+    url("0783363C-E22D-4271-92A6-30B04E4556B5.png") center/cover no-repeat,
+    linear-gradient(
+        180deg,
+        #705844 0%,
+        #4c372c 54%,
+        #2d211b 100%
+    );
     box-shadow: 0 24px 60px var(--shadow);
 }
 
